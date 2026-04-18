@@ -1,0 +1,34 @@
+{
+  "selected_features": [
+    "Response",
+    "N",
+    "Risk",
+    "Age",
+    "Stage",
+    "T",
+    "M",
+    "Gender",
+    "Smoking",
+    "Focality",
+    "Adenopathy",
+    "Physical Examination"
+  ],
+  "all_features": [
+    "Age",
+    "Gender",
+    "Smoking",
+    "Hx Smoking",
+    "Hx Radiothreapy",
+    "Thyroid Function",
+    "Physical Examination",
+    "Adenopathy",
+    "Pathology",
+    "Focality",
+    "Risk",
+    "T",
+    "N",
+    "M",
+    "Stage",
+    "Response"
+  ]
+}
