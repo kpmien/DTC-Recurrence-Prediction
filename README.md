@@ -110,10 +110,10 @@ Explainability
 Both SHAP and LIME consistently identified the following as dominant predictors:
 
 1. **Response** to initial treatment (SHAP mean |value|: 0.2090)
-2. **Risk** — ATA risk stratification (0.0784)
-3. **N** — Lymph node involvement (0.0493)
-4. **T** — Tumor stage (0.0248)
-5. **Stage** — Final staging (0.0203)
+2. **Risk**: ATA risk stratification (0.0784)
+3. **N**: Lymph node involvement (0.0493)
+4. **T**: Tumor stage (0.0248)
+5. **Stage**: Final staging (0.0203)
 
 ---
 
@@ -145,8 +145,8 @@ Both SHAP and LIME consistently identified the following as dominant predictors:
 
 ```
 ├── README.md
-├── dtc_recurrence_notebook.ipynb   # Full reproducible experiment
-├── Thyroid_Diff.csv                # Dataset (UCI ML Repository)
+├── notebokk/                       # Full reproducible experiment
+├── data/                           # Dataset (UCI ML Repository)
 ├── figures/                        # All generated figures
 ├── saved_models/                   # Trained model files (.joblib)
 └── LICENSE
@@ -175,7 +175,7 @@ pip install numpy pandas matplotlib scikit-learn shap lime imbalanced-learn stat
 
 - **SVM** is the best single-split performer; **RF** is the most robust under cross-validation
 - Feature selection from 16 → 12 features preserved identical performance for DT, RF, SVM while improving ANN (+6.5% AUC)
-- **SMOTE is unnecessary** for the best-performing model — moderate class imbalance is adequately handled by stratified splitting and hyperparameter tuning
+- **SMOTE is unnecessary** for the best-performing model; moderate class imbalance is adequately handled by stratified splitting and hyperparameter tuning
 - All models achieve sub-second inference, confirming suitability for clinical deployment
 - Statistical significance tests (Wilcoxon, McNemar) confirm that SVM vs ANN is the only significant pairwise difference
 
