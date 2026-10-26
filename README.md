@@ -1,210 +1,87 @@
-# Explainable Machine Learning for Differentiated Thyroid Cancer Recurrence Prediction
+# Recurrence Prediction in Differentiated Thyroid Cancer: a Leakage-Aware Re-evaluation
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)](https://scikit-learn.org/)
+[![Python](https://img.shields.io/badge/Python-3.13-blue.svg)](https://www.python.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.9-orange.svg)](https://scikit-learn.org/)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Paper-Under%20Review-yellow.svg)]()
+[![Status](https://img.shields.io/badge/Manuscript-in%20preparation-lightgrey.svg)]()
 
-An explainable machine learning framework for predicting recurrence in Differentiated Thyroid Cancer (DTC), combining competitive predictive performance with systematic interpretability, hyperparameter analysis, and computational benchmarking.
+Code and results for the manuscript *Re-evaluating machine learning for recurrence prediction in differentiated thyroid cancer: test-set tuning, duplicate records and a post-treatment predictor* (K. P. Mien, Erciyes University).
 
-> **Paper:** *Explainable Machine Learning Approach for Recurrence Prediction in Differentiated Thyroid Cancer* — under review for publication.
-
----
-
-## Highlights
-
-- **SVM achieved 98.7% accuracy and AUC of 0.9967** with only 1 false negative across 77 test instances
-- **Random Forest** demonstrated superior cross-validation stability (AUC: 0.9857 ± 0.0133)
-- **SHAP + LIME** applied for global and local interpretability — both identified Response, Risk, and N stage as dominant predictors
-- **Leak-free pipeline**: feature selection and scaling fitted exclusively on the training partition
-- Systematic analysis of split sensitivity, hyperparameter tuning, SMOTE effects, computational speed, and statistical significance
+Many studies on the public UCI thyroid cancer recurrence dataset report accuracies close to 99%. This repository shows where those numbers come from, using repeated nested cross-validation and a simple reference: the **response to initial therapy** variable used on its own, with no model at all.
 
 ---
 
-## Problem
+## Main findings
 
-Differentiated thyroid cancer has a favorable overall prognosis, but recurrence affects 5–30% of patients during follow-up. Accurate and interpretable prediction of recurrence risk is critical for timely clinical intervention and personalized patient management. Prior work primarily focused on maximizing accuracy while neglecting systematic evaluation of model robustness and explainability.
+| | AUC (nested CV) | Sensitivity |
+|---|---|---|
+| *Response to therapy* alone, no model | 0.978 | 0.82 |
+| Best model (logistic regression) | 0.987 | 0.90 |
+| Logistic regression **without** *Response* | 0.931 | 0.68 |
+| Random forest **without** *Response* | 0.934 | 0.76 |
 
----
-
-## Dataset
-
-| Property | Value |
-|----------|-------|
-| Source | [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/915/differentiated+thyroid+cancer+recurrence) |
-| Patients | 383 |
-| Features | 16 clinicopathological variables |
-| Target | Recurrence status (binary) |
-| Class distribution | 275 non-recurrence (71.8%) / 108 recurrence (28.2%) |
-| Follow-up | 10–15 years per patient |
-
----
-
-## Pipeline
-
-```
-Raw Dataset (383 × 17)
-    │
-    ├── Target encoding (Yes/No → 1/0)
-    ├── Ordinal encoding (Risk, T, N, M, Stage, Response)
-    └── Label encoding (binary & nominal features)
-         │
-         ▼
-Stratified Split 80/20 (train: 306 / test: 77, seed=42)
-         │
-         ├── StandardScaler fitted on train only (for SVM & ANN)
-         │
-         ▼
-Feature Selection (training set only)
-    ├── Chi-Square statistical test
-    └── RF Gini Importance
-    → 16 features reduced to 12 (excluded: Thyroid Function, Pathology)
-         │
-         ▼
-Model Training & Evaluation
-    ├── Decision Tree (max_depth=5)
-    ├── Random Forest (n_estimators=50)
-    ├── SVM (C=50, RBF kernel)
-    └── ANN (hidden layers: 64, 32)
-         │
-         ▼
-Systematic Experiments
-    ├── A. All features vs selected features
-    ├── B. Train/test split sensitivity (90/10 → 70/30)
-    ├── C. Computational speed benchmarking (50 runs)
-    ├── D. Hyperparameter sensitivity analysis
-    ├── E. Final hold-out + 5-fold stratified CV
-    ├── F. SMOTE oversampling sensitivity
-    └── G. Statistical significance (Wilcoxon + McNemar)
-         │
-         ▼
-Explainability
-    ├── SHAP (global, Random Forest)
-    └── LIME (local, SVM — 3 representative instances)
-```
-
----
-
-## Results
-
-### Hold-out Performance (80/20 split)
-
-| Model | Accuracy | Precision | Recall | F1-score | AUC |
-|-------|----------|-----------|--------|----------|-----|
-| DT    | 0.974    | 1.000     | 0.9091 | 0.9524   | 0.9835 |
-| RF    | 0.974    | 1.000     | 0.9091 | 0.9524   | 0.9872 |
-| **SVM** | **0.987** | **1.000** | **0.9545** | **0.9767** | **0.9967** |
-| ANN   | 0.8831   | 0.7241    | 0.9545 | 0.8235   | 0.9802 |
-
-### 5-Fold Cross-Validation (AUC)
-
-| Model | Mean | Std | Min | Max |
-|-------|------|-----|-----|-----|
-| DT    | 0.9534 | 0.0271 | 0.9139 | 0.9838 |
-| **RF** | **0.9857** | **0.0133** | 0.9683 | 1.0000 |
-| SVM   | 0.9708 | 0.0259 | 0.9238 | 0.9955 |
-| ANN   | 0.9668 | 0.0195 | 0.9403 | 0.9920 |
-
-### Explainability — Top Predictors
-
-Both SHAP and LIME consistently identified the following as dominant predictors:
-
-1. **Response** to initial treatment (SHAP mean |value|: 0.2090)
-2. **Risk**: ATA risk stratification (0.0784)
-3. **N**: Lymph node involvement (0.0493)
-4. **T**: Tumor stage (0.0248)
-5. **Stage**: Final staging (0.0203)
-
----
-
-## Figures
+- **No trained model is significantly better than *Response* alone** (corrected resampled *t*-test, all *p* > 0.05). The models mainly improve sensitivity.
+- *Response* is assessed during follow-up, and its worst category (*structural incomplete*) means that disease is visible on imaging: 89 of the 91 patients in that category are labelled as recurrences.
+- **Without *Response***, the AUC falls to about 0.93, which is a more realistic estimate of what can be predicted at the end of initial treatment.
+- **The 98.7% accuracy of the original analysis** (see `original/`) is reproduced only when hyperparameters are chosen on the test set. Tuned on the training set, the same split gives 97.4%, and accuracy over 50 random splits ranges from 89.6% to 100%.
+- The dataset contains **19 exact duplicate rows** (all non-recurrence cases), as also noted by [Aggarwal et al. (2024)](https://math.mit.edu/research/highschool/primes/materials/2024/Aggarwal-Gotti-Kaur-Lu.pdf) and [Ashraf & Ilyas](https://github.com/MobeenMuhammadAshraf/dtc-poisoning). Removing them changes the results very little.
 
 <p align="center">
-  <img src="figures/feature_selection.png" width="80%" alt="Feature Selection"/>
-  <br><em>Feature Selection — Chi-Square and RF Gini Importance</em>
-</p>
-
-<p align="center">
-  <img src="figures/shap_beeswarm.png" width="60%" alt="SHAP Beeswarm"/>
-  <br><em>SHAP Beeswarm — Random Forest (Test Set)</em>
-</p>
-
-<p align="center">
-  <img src="figures/lime_explanations.png" width="80%" alt="LIME Explanations"/>
-  <br><em>LIME Explanations — SVM Model (Instance-Level)</em>
-</p>
-
-<p align="center">
-  <img src="figures/confusion_matrices.png" width="80%" alt="Confusion Matrices"/>
-  <br><em>Confusion Matrices — Hold-out Test Set (80/20)</em>
+  <img src="figures/fig_nested_auc.png" width="85%" alt="AUC by model and feature set"/>
+  <br><em>AUC on the 25 outer test folds, with all variables, without Response, and without Response and Risk.</em>
 </p>
 
 ---
 
-## Repository Structure
+## Repository structure
 
 ```
-├── README.md
-├── notebokk/                       # Full reproducible experiment
-├── data/                           # Dataset (UCI ML Repository)
-├── figures/                        # All generated figures
-├── saved_models/                   # Trained model files (.joblib)
-└── LICENSE
+├── data/Thyroid_Diff.csv              # UCI dataset id 915 (CC BY 4.0)
+├── notebooks/
+│   └── dtc_recurrence_corrected.ipynb # full analysis, executed, with outputs
+├── analysis.py                        # same code as the notebook, as a script (# %% cells)
+├── make_tables.py                     # builds the LaTeX tables and number macros of the paper
+├── py2nb.py                           # rebuilds the notebook from analysis.py
+├── results/                           # CSV/JSON outputs (fold-level results, tests, calibration, SHAP)
+├── figures/                           # figures of the paper (PDF + PNG)
+├── original/                          # first version of the analysis (course project), kept for reference
+└── requirements.txt                   # exact package versions used
 ```
 
----
-
-## Quickstart
-
-### Requirements
+## Reproduce
 
 ```bash
-pip install numpy pandas matplotlib scikit-learn shap lime imbalanced-learn statsmodels joblib
+pip install -r requirements.txt
+cd notebooks
+jupyter nbconvert --to notebook --execute --inplace dtc_recurrence_corrected.ipynb
 ```
 
-### Run
+The full run takes about 35 minutes on two CPU cores. Set the environment variable `FAST=1` for a quick smoke test with fewer repeats.
 
-1. Place `Thyroid_Diff.csv` in the same directory as the notebook
-2. Open and run `dtc_recurrence_notebook.ipynb`
-3. All figures are saved to the `figures/` directory
-4. Trained models are exported to `saved_models/`
+## Method in brief
 
----
+- **Pipeline fitted inside each training fold:** one-hot encoding, Chi-square feature selection (*k* tuned), scaling, classifier.
+- **Repeated nested cross-validation:** 5 × 5 outer folds, 5-fold inner grid search on AUC.
+- **Models:** logistic regression, decision tree, random forest, RBF SVM, multilayer perceptron, compared with *Response* alone.
+- **Ablation** without *Response*, and without *Response* and *Risk*.
+- **Calibration** (Brier score, slope), **decision curves**, and **SHAP** for the random forest.
 
-## Key Findings
+## About `original/`
 
-- **SVM** is the best single-split performer; **RF** is the most robust under cross-validation
-- Feature selection from 16 → 12 features preserved identical performance for DT, RF, SVM while improving ANN (+6.5% AUC)
-- **SMOTE is unnecessary** for the best-performing model; moderate class imbalance is adequately handled by stratified splitting and hyperparameter tuning
-- All models achieve sub-second inference, confirming suitability for clinical deployment
-- Statistical significance tests (Wilcoxon, McNemar) confirm that SVM vs ANN is the only significant pairwise difference
+`original/` contains the first version of this work (a course project). It reported 98.7% accuracy for an SVM on a single 80/20 split. That estimate was optimistic: hyperparameters were selected on the test set, and the role of *Response* was not examined. It is kept for transparency; use `notebooks/` for any result.
 
----
+## Data
+
+*Differentiated Thyroid Cancer Recurrence*, UCI Machine Learning Repository, dataset id 915, [doi:10.24432/C5632J](https://doi.org/10.24432/C5632J), licensed CC BY 4.0. Original study: Borzooei et al. (2024), *Eur Arch Oto-Rhino-Laryngol* 281:2095–2104, [doi:10.1007/s00405-023-08299-w](https://doi.org/10.1007/s00405-023-08299-w).
 
 ## Citation
 
-```bibtex
-@article{mien2026dtc,
-  title   = {Explainable Machine Learning Approach for Recurrence Prediction 
-             in Differentiated Thyroid Cancer},
-  author  = {Mien, Kounab{\'e} Paulin},
-  year    = {2026},
-  note    = {Under review}
-}
-```
-
----
+If you use this code, please cite the manuscript (citation details will be added once a preprint is available).
 
 ## Author
 
-**Kounabé Paulin MIEN**  
-Master's Student in Computer Engineering — Erciyes University, Kayseri, Turkey  
-Supervised by Assoc. Prof. Ahmet Nusret Toprak
-
-📧 paulinmien1@gmail.com
-
----
+**Kounabé Paulin MIEN**, Department of Computer Engineering, Erciyes University, Kayseri, Türkiye · paulinmien1@gmail.com
 
 ## License
 
-This project is licensed under the Apache License 2.0 — see [LICENSE](LICENSE) for details.
+Code: Apache License 2.0, see [LICENSE](LICENSE). The dataset keeps its original CC BY 4.0 licence.
