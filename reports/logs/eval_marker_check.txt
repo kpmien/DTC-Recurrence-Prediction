@@ -1,0 +1,5 @@
+thyroidxl {'counts': {'tn': 148, 'fn': 1, 'fp': 1}, 'hand_prevalence': 0.007, 'sensitivity': 0.0, 'sensitivity_ci95': [0.0, 0.793], 'specificity': 0.993, 'specificity_ci95': [0.963, 0.999], 'passed': True}
+thyus2path_b2 {'counts': {'fp': 38, 'tp': 62, 'tn': 49, 'unsure': 1}, 'hand_prevalence': 0.416, 'sensitivity': 1.0, 'sensitivity_ci95': [0.942, 1.0], 'specificity': 0.563, 'specificity_ci95': [0.459, 0.663], 'passed': False}
+tn3k {'counts': {'tn': 70, 'tp': 40, 'fn': 24, 'unsure': 6, 'fp': 10}, 'hand_prevalence': 0.444, 'sensitivity': 0.625, 'sensitivity_ci95': [0.503, 0.733], 'specificity': 0.875, 'specificity_ci95': [0.785, 0.931], 'passed': False}
+tn5000 {'counts': {'tn': 88, 'tp': 58, 'fp': 4}, 'hand_prevalence': 0.387, 'sensitivity': 1.0, 'sensitivity_ci95': [0.938, 1.0], 'specificity': 0.957, 'specificity_ci95': [0.893, 0.983], 'passed': True}
+NOT ACCEPTED | disagreements 78

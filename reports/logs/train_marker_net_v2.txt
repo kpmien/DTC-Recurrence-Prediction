@@ -1,0 +1,35 @@
+backgrounds 1600
+stage1 step 250 loss 0.0641 acc(last 250) 0.9536 sec 64
+stage1 step 500 loss 0.0757 acc(last 250) 0.9718 sec 128
+stage1 step 750 loss 0.0372 acc(last 250) 0.9763 sec 191
+stage1 step 1000 loss 0.0201 acc(last 250) 0.9817 sec 255
+stage1 step 1250 loss 0.1231 acc(last 250) 0.9851 sec 318
+stage1 step 1500 loss 0.0642 acc(last 250) 0.9862 sec 382
+stage1 step 1750 loss 0.0611 acc(last 250) 0.9884 sec 445
+stage1 step 2000 loss 0.0475 acc(last 250) 0.9899 sec 509
+stage1 step 2250 loss 0.0091 acc(last 250) 0.9908 sec 574
+stage1 step 2500 loss 0.0452 acc(last 250) 0.9906 sec 638
+mining: 14595 locations; ThyroidXL frames with a peak >= 0.5: 547 of 550
+mining: 1742 furniture locations in 2 formats
+hard1 step 250 loss 0.0495 acc(last 250) 0.9855 sec 815
+hard1 step 500 loss 0.0799 acc(last 250) 0.9844 sec 878
+hard1 step 750 loss 0.0074 acc(last 250) 0.9861 sec 941
+hard1 step 1000 loss 0.0442 acc(last 250) 0.9896 sec 1007
+hard1 step 1250 loss 0.0086 acc(last 250) 0.9901 sec 1070
+mining: 4436 locations; ThyroidXL frames with a peak >= 0.5: 373 of 550
+mining: 976 furniture locations in 2 formats
+hard2 step 250 loss 0.0935 acc(last 250) 0.9882 sec 1262
+hard2 step 500 loss 0.0834 acc(last 250) 0.9860 sec 1335
+hard2 step 750 loss 0.0471 acc(last 250) 0.9868 sec 1407
+hard2 step 1000 loss 0.0312 acc(last 250) 0.9890 sec 1480
+hard2 step 1250 loss 0.0472 acc(last 250) 0.9903 sec 1552
+mining: 2775 locations; ThyroidXL frames with a peak >= 0.5: 311 of 550
+mining: 798 furniture locations in 2 formats
+hard3 step 250 loss 0.0133 acc(last 250) 0.9907 sec 1764
+hard3 step 500 loss 0.0213 acc(last 250) 0.9863 sec 1837
+hard3 step 750 loss 0.0574 acc(last 250) 0.9879 sec 1909
+hard3 step 1000 loss 0.0065 acc(last 250) 0.9899 sec 1982
+hard3 step 1250 loss 0.0175 acc(last 250) 0.9907 sec 2055
+mining: 2224 locations; ThyroidXL frames with a peak >= 0.5: 269 of 550
+mining: 610 furniture locations in 2 formats
+saved models/image_study/marker_net_v2.pt parameters 115345
