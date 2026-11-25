@@ -1,0 +1,37 @@
+{
+ "manifest": "image_study.csv",
+ "rows": 22631,
+ "used": 22578,
+ "checks": {
+  "manifest_matches_splits_json": true,
+  "sample_id_unique": true,
+  "every_used_row_has_label_and_partition": true,
+  "dev_rows_have_role": true,
+  "no_group_in_two_partitions": true,
+  "one_label_per_group": true,
+  "no_patient_in_two_partitions": true,
+  "content_hash_matches_files": true,
+  "no_identical_file_in_two_partitions": true,
+  "no_identical_file_in_two_datasets": true
+ },
+ "passed": true,
+ "groups_in_two_partitions": [],
+ "identical_files_in_two_partitions": 0,
+ "near_duplicate_pairs_across_partitions_hamming_le_6": {
+  "tn3k:dev_a/train ~ tn3k:dev_a/val": 1
+ },
+ "near_duplicate_examples": [
+  [
+   "tn3k:trainval/0647.jpg",
+   "tn3k:trainval/0928.jpg",
+   5,
+   "0",
+   "1"
+  ]
+ ],
+ "excluded": {
+  "patient has no label": 8,
+  "byte-identical copy of an official test image": 44,
+  "near-identical to an official test image": 1
+ }
+}

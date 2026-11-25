@@ -1,0 +1,13 @@
+thyroidxl|dev_a|train                  images   7656 groups   2684 benign   5664 malignant   1992
+thyroidxl|dev_a|val                    images   1885 groups    670 benign   1388 malignant    497
+thyroidxl|test|-                       images   2094 groups    739 benign   1120 malignant    974
+thyus2path_b2|excluded|-               images      8 groups      1 benign      0 malignant      0
+thyus2path_b2|shift_test|-             images   2495 groups    241 benign    961 malignant   1534
+tn3k|dev_a|train                       images   2303 groups   2303 benign   1524 malignant    779
+tn3k|dev_a|val                         images    576 groups    576 benign    381 malignant    195
+tn3k|test|-                            images    614 groups    614 benign    378 malignant    236
+tn5000|dev_a|train                     images   3481 groups   3408 benign   1032 malignant   2449
+tn5000|dev_a|val                       images    474 groups    473 benign    114 malignant    360
+tn5000|excluded|-                      images     45 groups     43 benign     11 malignant     34
+tn5000|test|-                          images   1000 groups    992 benign    269 malignant    731
+rows 22631 manifest sha256 247dcbf21cc90f90260dd5ad89efd4a7f413a1f9f37a8eea1073950a1986ef24

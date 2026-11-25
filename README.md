@@ -66,6 +66,12 @@ The full run takes about 35 minutes on two CPU cores. Set the environment variab
 - **Ablation** without *Response*, and without *Response* and *Risk*.
 - **Calibration** (Brier score, slope), **decision curves**, and **SHAP** for the random forest.
 
+## Ongoing work: ultrasound image study (branch `image-study`)
+
+A second study is being prepared on this branch. It asks how much of the performance loss of benign/malignant thyroid nodule classifiers between hospitals is explained by factors other than the nodule itself: burned-in measurement markers, crop construction, frame geometry, prevalence and the reference standard. It uses four public ultrasound datasets (TN5000, TN3K, ThyUS2Path, ThyroidXL).
+
+The research question, hypotheses and decision rules were fixed before any model was trained; they are in Section 0 of [`PROGRESS.md`](PROGRESS.md), which also serves as the dated working log. No classification result exists yet. Code is in `scripts/image_study/`, audit outputs in `reports/`. The datasets are not redistributed here; per-image files (manifest, labels, images) stay local.
+
 ## About `original/`
 
 `original/` contains the first version of this work (a course project). It reported 98.7% accuracy for an SVM on a single 80/20 split. That estimate was optimistic: hyperparameters were selected on the test set, and the role of *Response* was not examined. It is kept for transparency; use `notebooks/` for any result.
