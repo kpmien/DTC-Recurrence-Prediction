@@ -1,0 +1,95 @@
+{
+ "seed": 20261123,
+ "val_fraction": 0.2,
+ "tn5000_near_duplicate_hamming": 6,
+ "manifest": "image_study.csv",
+ "manifest_sha256": "247dcbf21cc90f90260dd5ad89efd4a7f413a1f9f37a8eea1073950a1986ef24",
+ "rows": 22631,
+ "rule": "groups ranked by sha256(seed|group_id) inside each label stratum; lowest val_fraction go to val",
+ "partitions": {
+  "thyroidxl|dev_a|train": {
+   "images": 7656,
+   "groups": 2684,
+   "benign_images": 5664,
+   "malignant_images": 1992,
+   "sample_ids_sha256": "ebe719e6299dca48da15a985664529261bd3cf2e860e020cef2b756359a5662c"
+  },
+  "thyroidxl|dev_a|val": {
+   "images": 1885,
+   "groups": 670,
+   "benign_images": 1388,
+   "malignant_images": 497,
+   "sample_ids_sha256": "d58c0ee7c8c268b9cea7e84e079a527e3f3ecaaf7166fc4ea64752caea032a3e"
+  },
+  "thyroidxl|test|-": {
+   "images": 2094,
+   "groups": 739,
+   "benign_images": 1120,
+   "malignant_images": 974,
+   "sample_ids_sha256": "40afec6092a381d0f84420134be8f161f6eddd865654d4bb33ac5abb53fb2599"
+  },
+  "thyus2path_b2|excluded|-": {
+   "images": 8,
+   "groups": 1,
+   "benign_images": 0,
+   "malignant_images": 0,
+   "sample_ids_sha256": "03ef43d8d0eba5865057b1c77d245e5cdbf268bb451f2a2f6f1577b712a70782"
+  },
+  "thyus2path_b2|shift_test|-": {
+   "images": 2495,
+   "groups": 241,
+   "benign_images": 961,
+   "malignant_images": 1534,
+   "sample_ids_sha256": "304e871182bdc4a8849abdf7f7d3a90624ca28a3306a461da17b9775378b571a"
+  },
+  "tn3k|dev_a|train": {
+   "images": 2303,
+   "groups": 2303,
+   "benign_images": 1524,
+   "malignant_images": 779,
+   "sample_ids_sha256": "b2834204d5b693ad115a08f011754dbe809166419094053e817b395ec77d5def"
+  },
+  "tn3k|dev_a|val": {
+   "images": 576,
+   "groups": 576,
+   "benign_images": 381,
+   "malignant_images": 195,
+   "sample_ids_sha256": "3aeaeb0ea1d73cbd3d4ccfb329864d314af0f2da2294e5470ae7a6c92df5c6ec"
+  },
+  "tn3k|test|-": {
+   "images": 614,
+   "groups": 614,
+   "benign_images": 378,
+   "malignant_images": 236,
+   "sample_ids_sha256": "26495646ac7466558d8756695f71bfe6e6410cde0da235807139409f6bcd192b"
+  },
+  "tn5000|dev_a|train": {
+   "images": 3481,
+   "groups": 3408,
+   "benign_images": 1032,
+   "malignant_images": 2449,
+   "sample_ids_sha256": "9e32e9fcf9a4f2c078e43cc58fbbf634e5ebadd5c70a630e3cf82537a5945093"
+  },
+  "tn5000|dev_a|val": {
+   "images": 474,
+   "groups": 473,
+   "benign_images": 114,
+   "malignant_images": 360,
+   "sample_ids_sha256": "a455eebbf0970bf62685ad0b1b6775a5aba4e9124c1ecbbc6bcc395f43b303d0"
+  },
+  "tn5000|excluded|-": {
+   "images": 45,
+   "groups": 43,
+   "benign_images": 11,
+   "malignant_images": 34,
+   "sample_ids_sha256": "8e5743d83f742158fb319765b86ada64077998ea5927fd6264c4468b5c7b3c86"
+  },
+  "tn5000|test|-": {
+   "images": 1000,
+   "groups": 992,
+   "benign_images": 269,
+   "malignant_images": 731,
+   "sample_ids_sha256": "ae44596bf3e0a200df821d1eee1cc8eb974aad71851bd14dff5f1d50d028b773"
+  }
+ }
+}

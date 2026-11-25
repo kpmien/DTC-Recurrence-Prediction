@@ -1,0 +1,52 @@
+{
+ "tn5000": {
+  "counts": {
+   "n": 5000,
+   "xml_size_differs_from_image": 2,
+   "box_outside_image": 1
+  },
+  "mask_values_seen": {},
+  "box_area_fraction": {
+   "min": 0.0012785515320334262,
+   "median": 0.03377715877437326,
+   "max": 0.8008830083565459
+  },
+  "flagged": [
+   "tn5000:003813"
+  ]
+ },
+ "tn3k": {
+  "counts": {
+   "n": 3493
+  },
+  "mask_values_seen": {
+   "0": 3493,
+   "1": 3493,
+   "2": 3493,
+   "3": 3493,
+   "4": 3493,
+   "5": 3493
+  },
+  "box_area_fraction": {
+   "min": 0.0028361131744209602,
+   "median": 0.12022601297128299,
+   "max": 0.8974358974358975
+  },
+  "flagged": []
+ },
+ "thyroidxl": {
+  "counts": {
+   "n": 11635
+  },
+  "mask_values_seen": {
+   "0": 11635,
+   "255": 11635
+  },
+  "box_area_fraction": {
+   "min": 0.006681076832383572,
+   "median": 0.06431570673589063,
+   "max": 0.8015120331778552
+  },
+  "flagged": []
+ }
+}

@@ -1,0 +1,14 @@
+PASS manifest_matches_splits_json
+PASS sample_id_unique
+PASS every_used_row_has_label_and_partition
+PASS dev_rows_have_role
+PASS no_group_in_two_partitions
+PASS one_label_per_group
+PASS no_patient_in_two_partitions
+PASS content_hash_matches_files
+PASS no_identical_file_in_two_partitions
+PASS no_identical_file_in_two_datasets
+near-duplicate pairs across partitions (Hamming <= 6): {'tn3k:dev_a/train ~ tn3k:dev_a/val': 1}
+examples [('tn3k:trainval/0647.jpg', 'tn3k:trainval/0928.jpg', 5, '0', '1')]
+excluded {'patient has no label': 8, 'byte-identical copy of an official test image': 44, 'near-identical to an official test image': 1}
+RESULT PASSED

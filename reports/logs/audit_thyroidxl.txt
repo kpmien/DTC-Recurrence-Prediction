@@ -1,0 +1,74 @@
+train {'images': 9541, 'masks': 9541, 'labels': 9541, 'labels_orig': 9541} all four sets equal: True
+ categories {0: 'benign', 1: 'malignant'} | annotations per image {1: 9541} | images without annotation 0
+ patients: in filenames 3354 | in list 3354 | in info 3354 | all equal True
+ label lines per txt {1: 9541} | labels_orig label vs category {('lanhtinh', 0): 7052, ('actinh', 1): 2489} | mismatches {}
+ patients by image labels {'benign': 2477, 'malignant': 877} | images by label {'benign': 7052, 'malignant': 2489}
+ images per patient: median 3 (first 500 patients)
+ patient conclusion codes {3: 2397, 4: 80, 2: 366, 1: 511} | patients with a second nodule 0
+ nodule FNAC {'2': 2463, '4': 4, 'None': 106, '3': 34, '5': 72, '1': 6, '6': 60, '6 (papillary thyroid carcinoma)': 609}
+ nodule histopathology {'none': 2765, 'present': 589}
+ nodule TIRADS {'4': 1024, '3': 1090, '5': 888, '2': 328, '1': 24}
+ FNAC x nodule conclusion:
+    ('2', 'Benign (FNAC) - 3') 2387
+    ('6 (papillary thyroid carcinoma)', 'Malignant (FNAC) - 2') 323
+    ('6 (papillary thyroid carcinoma)', 'Malignant (Histopathology) - 1') 286
+    ('None', 'Malignant (Histopathology) - 1') 100
+    ('5', 'Malignant (Histopathology) - 1') 69
+    ('2', 'Benign (Histopathology) - 4') 65
+    ('6', 'Malignant (FNAC) - 2') 39
+    ('6', 'Malignant (Histopathology) - 1') 21
+    ('3', 'Malignant (Histopathology) - 1') 21
+    ('2', 'Malignant (Histopathology) - 1') 11
+    ('3', 'Benign (FNAC) - 3') 8
+    ('3', 'Benign (Histopathology) - 4') 5
+    ('None', 'Malignant (FNAC) - 2') 4
+    ('4', 'Benign (Histopathology) - 4') 3
+    ('1', 'Benign (Histopathology) - 4') 3
+    ('None', 'Benign (Histopathology) - 4') 2
+    ('5', 'Benign (Histopathology) - 4') 2
+    ('1', 'Malignant (Histopathology) - 1') 2
+    ('1', 'Benign (FNAC) - 3') 1
+    ('5', 'Benign (FNAC) - 3') 1
+    ('4', 'Malignant (Histopathology) - 1') 1
+ image label x patient conclusion code {('benign', 3): 6841, ('malignant', 2): 1040, ('malignant', 1): 1449, ('benign', 4): 211}
+test {'images': 2094, 'masks': 2094, 'labels': 2094, 'labels_orig': 2094} all four sets equal: True
+ categories {0: 'benign', 1: 'malignant'} | annotations per image {1: 2094} | images without annotation 0
+ patients: in filenames 739 | in list 739 | in info 739 | all equal True
+ label lines per txt {1: 2094} | labels_orig label vs category {('actinh', 1): 974, ('lanhtinh', 0): 1120} | mismatches {}
+ patients by image labels {'malignant': 353, 'benign': 386} | images by label {'malignant': 974, 'benign': 1120}
+ images per patient: median 3 (first 500 patients)
+ patient conclusion codes {3: 372, 4: 14, 1: 197, 2: 156} | patients with a second nodule 0
+ nodule FNAC {'2': 388, '4': 2, 'None': 40, '6 (papillary thyroid carcinoma)': 245, '6': 28, '5': 31, '3': 5}
+ nodule histopathology {'none': 530, 'present': 209}
+ nodule TIRADS {'2': 45, '4': 215, '3': 182, '5': 297}
+ FNAC x nodule conclusion:
+    ('2', 'Benign (FNAC) - 3') 372
+    ('6 (papillary thyroid carcinoma)', 'Malignant (FNAC) - 2') 145
+    ('6 (papillary thyroid carcinoma)', 'Malignant (Histopathology) - 1') 100
+    ('None', 'Malignant (Histopathology) - 1') 39
+    ('5', 'Malignant (Histopathology) - 1') 31
+    ('6', 'Malignant (Histopathology) - 1') 18
+    ('2', 'Benign (Histopathology) - 4') 11
+    ('6', 'Malignant (FNAC) - 2') 10
+    ('3', 'Malignant (Histopathology) - 1') 5
+    ('2', 'Malignant (Histopathology) - 1') 4
+    ('4', 'Benign (Histopathology) - 4') 2
+    ('None', 'Benign (Histopathology) - 4') 1
+    ('2', 'Malignant (FNAC) - 2') 1
+ image label x patient conclusion code {('malignant', 1): 544, ('malignant', 2): 430, ('benign', 3): 1081, ('benign', 4): 39}
+patients in both splits: 0
+txl_train n 9541 modes {'RGB': 9541} distinct sizes 127 top [((727, 532), 8810), ((831, 526), 161), ((647, 537), 131)]
+txl_test n 2094 modes {'RGB': 2094} distinct sizes 37 top [((727, 532), 1943), ((831, 526), 34), ((647, 537), 28)]
+tn3k n 3493 modes {'L': 3493} distinct sizes 2932 top [((411, 336), 11), ((412, 336), 9), ((411, 335), 8)]
+tn5000 n 5000 modes {'RGB': 5000} distinct sizes 9 top [((718, 500), 3975), ((818, 628), 649), ((498, 429), 205)]
+thyus_b1 n 6005 modes {'RGB': 6005} distinct sizes 1552 top [((803, 542), 451), ((853, 581), 207), ((611, 605), 170)]
+thyus_b2 n 2503 modes {'RGB': 2503} distinct sizes 11 top [((1024, 768), 1073), ((1260, 910), 759), ((1292, 970), 174)]
+exact-duplicate groups by dataset combination: {'txl_train': 24, 'txl_test': 11, 'tn5000': 119, 'thyus_b1': 19, 'thyus_b2': 12}
+exact-duplicate ThyroidXL pairs: {('same_patient', 'same_label', 'same_split'): 35}
+near-duplicate pairs with a ThyroidXL image (not byte-identical), dHash256 Hamming<=0: {}
+   ThyroidXL-internal pairs: {}
+near-duplicate pairs with a ThyroidXL image (not byte-identical), dHash256 Hamming<=6: {}
+   ThyroidXL-internal pairs: {}
+near-duplicate pairs with a ThyroidXL image (not byte-identical), dHash256 Hamming<=12: {'txl_train': 3}
+   ThyroidXL-internal pairs: {('same_patient', 'same_label', 'same_split'): 3}
+   examples {'txl_train': [('00000196_5C7283E3_0.png', '00000196_7EC57B51_6.png', 8), ('00000757_2776A249_3.png', '00000757_805B9C8A_1.png', 12)]}

@@ -1,0 +1,50 @@
+{
+ "threshold": 0.7,
+ "cell": 16,
+ "min_group": 40,
+ "static_share": 0.05,
+ "static_cells": {
+  "thyroidxl|727|532": 9,
+  "thyroidxl|984|519": 91,
+  "thyus2path_b2|1024|768": 407,
+  "thyus2path_b2|1260|910": 270,
+  "thyus2path_b2|1292|970": 230,
+  "thyus2path_b2|1016|708": 195,
+  "thyus2path_b2|1016|758": 190,
+  "thyus2path_b2|960|720": 279,
+  "tn5000|718|500": 23,
+  "tn5000|818|628": 198,
+  "tn5000|498|429": 9,
+  "tn5000|439|368": 20
+ },
+ "datasets": {
+  "thyroidxl": {
+   "images": 11635,
+   "with_caliper": 39,
+   "raw_above_threshold": 812,
+   "in_format_with_static_map": 11371,
+   "share_with_caliper": 0.0034
+  },
+  "thyus2path_b2": {
+   "images": 2503,
+   "with_caliper": 1738,
+   "raw_above_threshold": 2503,
+   "in_format_with_static_map": 2427,
+   "share_with_caliper": 0.6944
+  },
+  "tn3k": {
+   "images": 3493,
+   "with_caliper": 1467,
+   "raw_above_threshold": 2003,
+   "in_format_with_static_map": 0,
+   "share_with_caliper": 0.42
+  },
+  "tn5000": {
+   "images": 5000,
+   "with_caliper": 2280,
+   "raw_above_threshold": 3726,
+   "in_format_with_static_map": 4953,
+   "share_with_caliper": 0.456
+  }
+ }
+}
